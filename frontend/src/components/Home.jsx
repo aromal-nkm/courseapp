@@ -38,9 +38,9 @@ const Home = () => {
   return (
 <>
 <Navbar/>
-    <div>
+    {/* <div>
         Welcome {user}
-    </div>
+    </div> */}
     
     <Container>
             <Grid container spacing={8}>    

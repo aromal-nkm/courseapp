@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import { Button } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios'
+import axiosInstance from '../axiosinterceptor';
 const Add = () => {
   const navigate = useNavigate()
   const [form, setForm]=useState({
@@ -25,7 +26,7 @@ const Add = () => {
   const location = useLocation()
   let sendData=()=>{
     if(location.state!= null){
-      axios.put('http://localhost:3000/course/editCourse/'+location.state.course._id,form).then((res)=>{
+      axiosInstance.put('http://localhost:3000/course/editCourse/'+location.state.course._id,form).then((res)=>{
         alert('Data updated');
         navigate('/home')
       }).catch((error)=>{
@@ -33,7 +34,7 @@ const Add = () => {
       })
     }
     else{
-      axios.post('http://localhost:3000/course/add',form).then((res)=>{
+      axiosInstance.post('http://localhost:3000/course/add',form).then((res)=>{
         navigate('/home')
       }).catch((error)=>{
         console.log(error)

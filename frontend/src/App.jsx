@@ -14,6 +14,7 @@ import { Routes, Route, useNavigate, Link } from 'react-router-dom'
 import Home from './components/Home';
 import Add from './components/Add';
 import Login from './components/Login';
+import PrivateRoutes from './components/PrivateRoutes';
 function App() {
   const [count, setCount] = useState(0)
   // const navigate = useNavigate()
@@ -24,8 +25,10 @@ function App() {
 
     <Routes>
       <Route path="/" element={<Login/>} />
+      <Route  element={<PrivateRoutes/>} >
       <Route path="/home" element={<Home />} />
       <Route path="/add" element={<Add />} />
+      </Route>
     </Routes>
     </>
   )

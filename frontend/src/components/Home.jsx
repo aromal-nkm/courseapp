@@ -9,6 +9,7 @@ import { Container, Grid, Stack } from '@mui/material';
 import  {useNavigate} from 'react-router-dom';
 import axios from 'axios'
 import Navbar from './Navbar';
+import axiosInstance from '../axiosinterceptor';
 const Home = () => {
     const user = localStorage.getItem("username");
   const [inputs ,setInputs] = useState([])
@@ -17,7 +18,7 @@ const Home = () => {
     navigate('/add',{state:{course}})
   }
   let deleteCourse =(p)=>{
-    axios.delete('http://localhost:3000/course/deleteCourse/'+p).then((res)=>{
+    axiosInstance.delete('http://localhost:3000/course/deleteCourse/'+p).then((res)=>{
       window.location.reload()
     }
 //navigate /path
@@ -26,7 +27,7 @@ const Home = () => {
     })
   }
   useEffect(() => {
-    axios.get('http://localhost:3000/course/')
+    axiosInstance.get('http://localhost:3000/course/')
         .then((res) => {
             setInputs(res.data); // Set fetched product data
         })
